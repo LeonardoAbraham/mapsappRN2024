@@ -12,10 +12,17 @@ export const PermissionsChecker = ({children}: PropsWithChildren) => {
 
     useEffect(() => {
         if(locationStatus === 'granted'){
-            navigation.navigate('MapScreen');
+            //navigation.navigate('MapScreen'); // Se puede regresar a la ruta anterior
+            navigation.reset({
+                index: 0,
+                routes:[{ name: 'MapScreen' }]
+            })
         }
         else if(locationStatus !== 'undetermined'){
-            navigation.navigate('PermissionsScreen');
+            //navigation.navigate('PermissionsScreen');
+            navigation.reset({ 
+                routes:[{ name: 'PermissionsScreen' }]
+            })
         }
     }, [locationStatus])
 
